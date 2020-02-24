@@ -1,23 +1,33 @@
-let counter = require('../../src/Counter.js');
+const Counter = require('../../src/Counter.js');
 const assert = require('power-assert');
 
-describe('src/Counter.js', () => {
+describe('src/Counter.jsのテスト', () => {
 	it('Counterインスタンスは_countプロパティを持つ', () => {
-		assert.notEqual(counter._count, null);
+		const counter = new Counter();
+		assert.strictEqual(counter.hasOwnProperty('_count'), true);
 	});
 	it('_countプロパティの初期値は0である', () => {
-		assert.equal(counter._count, 0);
+		const counter = new Counter();
+		assert.strictEqual(counter._count, 0);
 	});
 	it('Counterインスタンスはincrementメソッドを持つ', () => {
-		assert.notEqual(counter.increment(), 'unedefined');
+		const counter = new Counter();
+		assert.strictEqual(typeof counter.increment, 'function');
 	});
 	it('incrementメソッドを実行すると_countの値が1増える', () => {
-		assert.equal(counter.increment(), 1);
+		const counter = new Counter();
+		assert.strictEqual(counter._count, 0);
+		counter.increment();
+		assert.strictEqual(counter._count, 1);
 	});
 	it('Counterインスタンスはdecrementメソッドを持つ', () => {
-		assert.notEqual(counter.decrement(), 'undifined');
+		const counter = new Counter();
+		assert.strictEqual(typeof counter.decrement, 'function');
 	});
 	it('decrementメソッドを実行すると_countの値が1減る', () => {
-		assert.equal(counter.decrement(), 0);
+		const counter = new Counter();
+		assert.strictEqual(counter._count, 0);
+		counter.decrement();
+		assert.strictEqual(counter._count, -1);
 	});
 });
